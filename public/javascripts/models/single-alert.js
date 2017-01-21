@@ -1,6 +1,4 @@
 class SingleAlert {
-    constructor() {
-    }
     render() {
         //if (!this.route_id.includes("rr_")) return "";
         return `
