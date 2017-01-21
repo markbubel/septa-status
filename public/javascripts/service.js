@@ -5,7 +5,7 @@ class Service {
             if(this.readyState === 4) {
                 const data = JSON.parse(this.responseText);
                 const result = [];
-                for (const d of data) {
+                for (var d of data) {
                     const singleAlert = Object.assign(new SingleAlert(), d);
                     result.push(singleAlert); 
                 }
