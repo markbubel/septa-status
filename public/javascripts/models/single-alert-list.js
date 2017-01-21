@@ -5,7 +5,7 @@ class SingleAlertList {
         this.title = "Regional Rail Alerts";
         this.alerts = arrayOfAlerts;
         this.update();
-        setInterval(this.update.bind(this), 5000);
+        setInterval(this.update.bind(this), 60000);
     }
     render() {
         let output = `<div class="page-header"><h1>${this.title}</h1><span class="badge">Total alerts: ${this.alerts.length}</span></div>`;
