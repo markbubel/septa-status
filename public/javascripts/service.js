@@ -7,13 +7,12 @@ class Service {
                 const result = [];
                 for (const d of data) {
                     const singleAlert = Object.assign(new SingleAlert(), d);
-                    console.log(singleAlert);
                     result.push(singleAlert); 
                 }
                 giveback(result);
             }
         }
-        xhttp.open("GET", "/septa/all-status", true);
+        xhttp.open("GET", "/septa/rr-status", true);
         xhttp.send();
     }
 }

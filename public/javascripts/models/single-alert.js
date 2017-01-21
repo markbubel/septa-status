@@ -2,7 +2,7 @@ class SingleAlert {
     constructor() {
     }
     render() {
-        if (!this.route_id.includes("rr_")) return "";
+        //if (!this.route_id.includes("rr_")) return "";
         return `
             <div class="panel ${this.isGoodService() ? 'panel-success' : 'panel-danger'}">
                 <div class="panel-heading">
