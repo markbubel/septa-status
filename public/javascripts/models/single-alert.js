@@ -9,7 +9,7 @@ class SingleAlert {
                     <h3 class="panel-title">${this.route_name}</h3>
                 </div>
                 <div class="panel-body">
-                ${this.renderMessage()}
+                ${this.renderContent()}
                 </div>
             </div>
         `;
@@ -18,12 +18,19 @@ class SingleAlert {
         return this.advisory_message === "" && this.current_message === "" && this.detour_message === "";
     }
 
-    renderMessage() {
+    renderMessage(msg) {
+        if (msg === "") {
+            return "";
+        }
+        return `${msg}<br />`;
+    }
+    renderContent() {
         if (this.isGoodService()) {
             return "Good service";
         }
-        return `${this.advisory_message}<br />
-                ${this.current_message}<br />
-                ${this.detour_message}`;
+        return `${this.renderMessage(this.advisory_message)}
+                ${this.renderMessage(this.current_message)}
+                ${this.renderMessage(this.detour_message)}`;
     }
+
 }
