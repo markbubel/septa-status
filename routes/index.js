@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var pageTitle = 'SEPTA Service Status';
 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: pageTitle });
+router.get('/regional-rail', function(req, res, next) {
+  res.render('regional-rail', { title: pageTitle });
 });
 
 router.get('/buses', function(req, res, next) {

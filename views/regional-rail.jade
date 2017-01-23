@@ -1,11 +1,11 @@
 extends layout
 
 block content
-  p This app shows realtime statuses for Regional Rail and Bus SEPTA lines.
+  p This app shows realtime statuses for Regional Rail SEPTA lines.
   div#rr-alerts-container
     script(src='/javascripts/models/app.js')
-    script(src='/javascripts/models/alert-list.js') 
-    script(src='/javascripts/models/bus-alert.js')
+    script(src='/javascripts/models/rr-alert-list.js') 
+    script(src='/javascripts/models/alert.js')  
     script(src='/javascripts/models/rr-alert.js')  
     script(src='/javascripts/service.js')
     script(src='/javascripts/launcher.js')
