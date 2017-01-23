@@ -1,15 +1,12 @@
 extends layout
 
 block content
-    div#bus-alerts-container
-        .bs-example(data-example-id='simple-table')
-            table.table
-                caption Bus Status
-                thead
-                    tr
-                        th Route #
-                        th Alerts
-                        th Detours
-                        th Advisories
-                tbody
+    
+    table.table.table-hover
+        tr
+            th Route #
+            th Alerts
+            th Detours
+            th Advisories
+        table.table.table-hover#bus-alerts-container
     

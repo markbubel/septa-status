@@ -3,9 +3,9 @@ class BusAlert extends Alert {
         return `
       <tr>
         <td>${this.route_name}</td>
-        <td>${this.renderCurrentMessage()}</td>
-        <td>${this.renderAdvisoryMessage()}</td>
-        <td>${this.renderDetourMessage()}</td>
+        <td>${this.renderMessage(this.current_message, false)}</td>
+        <td>${this.renderMessage(this.advisory_message, false)}</td>
+        <td>${this.renderMessage(this.detour_message, true)}</td>
       </tr>
 `;
     }

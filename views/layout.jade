@@ -13,11 +13,20 @@ html
           .container-fluid
             ul.nav.navbar-nav
               li
-                a(href='/') Regional Rail
+                a(href='/regional-rail') Regional Rail
               li
                 a(href='/buses') Buses
               li
                 a(href='/about') About this app
       block content
+      footer &copy; 2017 Mark Bubel
+      script(src='/javascripts/models/app.js')
+      script(src='/javascripts/models/alert.js') 
+      script(src='/javascripts/models/rr-alert-list.js')
+      script(src='/javascripts/models/bus-alert-list.js')
+      script(src='/javascripts/models/rr-alert.js')
+      script(src='/javascripts/models/bus-alert.js')  
+      script(src='/javascripts/service.js')
+      script(src='/javascripts/launcher.js')
         
     

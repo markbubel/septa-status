@@ -1,7 +1,7 @@
-class RegionalRailAlertList {
+class BusAlertList {
     constructor(arrayOfAlerts = []) {
-        console.log('made rr')
-        this.title = 'Regional Rail';
+        console.log('made bus')
+        this.title = 'Bus';
         this.alerts = arrayOfAlerts;
         this.update();
         setInterval(this.update.bind(this), 60000);
@@ -13,11 +13,11 @@ class RegionalRailAlertList {
         for (const a of this.alerts) {
             output += a.render();
         }
-        document.getElementById("rr-alerts-container").innerHTML = output;
+        document.getElementById("bus-alerts-container").innerHTML = output;
     }
 
     update() {
-        new Service().getAllStatus('regional-rail', arrayOfAlerts => {
+        new Service().getAllStatus('bus', arrayOfAlerts => {
             this.alerts = arrayOfAlerts;
             this.render();
         });
