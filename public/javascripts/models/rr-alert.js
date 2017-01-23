@@ -6,9 +6,10 @@ class RegionalRailAlert extends Alert {
                     <h3 class="panel-title">${this.route_name}</h3>
                 </div>
                 <div class="panel-body">
-                    ${this.renderCurrentMessage()}<br />
-                    ${this.renderAdvisoryMessage()}<br />
-                    ${this.renderDetourMessage()}
+                    ${this.isGoodService() ? 'Good Service' : ''}
+                    ${this.renderMessage(this.current_message, false)}
+                    ${this.renderMessage(this.advisory_message, false)}
+                    ${this.renderMessage(this.detour_message, true)}
                 </div>
             </div>
         `;
