@@ -1,12 +1,13 @@
 class Alert {
     constructor(arrayOfAlerts = []) {
         this.title = "";
+        this.cow = "";
         this.alerts = arrayOfAlerts;
         this.update();
         setInterval(this.update.bind(this), 60000);
     }
 
-    renderRegionalRailAlert() {
+    renderRegionalRailAlert() {        
         let output = `<div class="page-header"><h1>${this.title}</h1></div>`;
         for (var alert of this.alerts) {
             output += alert.render();
@@ -23,7 +24,7 @@ class Alert {
     }
 
      update() {
-        new Service().getAllStatus(arrayOfAlerts => {
+        new Service().getAllStatus(arrayOfAlerts => {            
             this.alerts = arrayOfAlerts;
             for (var a of this.alerts) {
                 if (this.route_id.includes("rr_")) {

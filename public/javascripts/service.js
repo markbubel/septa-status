@@ -1,7 +1,7 @@
 class Service {
     getAllStatus(giveback) {
         const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
+        xhttp.onreadystatechange = function () { 
             if (this.readyState === 4) {
                 const data = JSON.parse(this.responseText);
                 const result = [];
