@@ -9,7 +9,7 @@ router.get('/all-status', function (req, res, next) {
             var data = JSON.parse(body);
             var result = [];
             for (var d of data) {
-                if (d.route_id.includes("rr_")) result.push(d);
+                result.push(d);
             }
             res.send(JSON.stringify(result));
         }

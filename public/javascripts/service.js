@@ -12,7 +12,7 @@ class Service {
                 giveback(result);
             }
         }
-        xhttp.open("GET", "/septa/all-status", true);
+        xhttp.open("GET", "/all-status", true);
         xhttp.send();
     }
 }
