@@ -1,17 +1,17 @@
 var express = require('express');
 var router = express.Router();
+var pageTitle = 'SEPTA Service Status';
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'SEPTA Service Status' });
+  res.render('index', { title: pageTitle });
 });
 
 router.get('/buses', function(req, res, next) {
-  res.render('buses', { title: 'SEPTA Service Status' });
+  res.render('buses', { title: pageTitle });
 });
 
 router.get('/about', function(req, res, next) {
-  res.render('about', { title: 'SEPTA Service Status' });
+  res.render('about', { title: pageTitle });
 });
 
 module.exports = router;
