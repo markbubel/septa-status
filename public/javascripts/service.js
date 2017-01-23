@@ -1,18 +1,24 @@
 class Service {
     getAllStatus(giveback) {
         const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if(this.readyState === 4) {
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4) {
                 const data = JSON.parse(this.responseText);
                 const result = [];
                 for (var d of data) {
-                    const newAlert = Object.assign(new Alert(), d);
-                    result.push(newAlert); 
+                    if (this.route_id.includes("rr_")) {
+                        const newRRAlert = Object.assign(new RegionalRailAlert(), d);
+                        result.push(newRRAlert);
+                    }
+                    else {
+                        const newBusAlert = Object.assign(new BusAlert(), d);
+                        result.push(newBusAlert);
+                    }
+                    giveback(result);
                 }
-                giveback(result);
             }
+            xhttp.open("GET", "/septa/all-status", true);
+            xhttp.send();
         }
-        xhttp.open("GET", "/septa/all-status", true);
-        xhttp.send();
     }
 }

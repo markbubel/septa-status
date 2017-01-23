@@ -5,8 +5,8 @@ class Alert {
         this.update();
         setInterval(this.update.bind(this), 60000);
     }
-    
-    renderRegionalRaileAlert() {
+
+    renderRegionalRailAlert() {
         let output = `<div class="page-header"><h1>${this.title}</h1></div>`;
         for (var alert of this.alerts) {
             output += alert.render();
@@ -25,12 +25,14 @@ class Alert {
      update() {
         new Service().getAllStatus(arrayOfAlerts => {
             this.alerts = arrayOfAlerts;
-            if (this.route_id.includes("rr_")) {
-                this.renderRegionalRaileAlert();
-            }
+            for (var a of this.alerts) {
+                if (this.route_id.includes("rr_")) {
+                this.renderRegionalRailAlert();
+                }
             else {
                  this.renderBusAlert();
-            } 
+            }
+            }
         });
     }
 
