@@ -6,6 +6,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'SEPTA Service Status' });
 });
 
+router.get('/buses', function(req, res, next) {
+  res.render('buses', { title: 'SEPTA Service Status' });
+});
+
 router.get('/about', function(req, res, next) {
   res.render('about', { title: 'SEPTA Service Status' });
 });
