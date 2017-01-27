@@ -8,3 +8,18 @@
     margin-right:5px;
     margin-bottom:5px;
 }
+
+.childOfbus-alerts-container:hover {
+    background:#333333;
+    color:#ffffff;
+}
+
+.bus-search {
+    margin-bottom:40px;
+}
+
+.btn {
+    margin-top:15px;
+     background:#333333;
+     color:#ffffff;
+}
