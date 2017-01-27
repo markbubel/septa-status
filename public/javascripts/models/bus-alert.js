@@ -1,6 +1,7 @@
 class BusAlert extends Alert {
     addClickListener() {
-        document.getElementsByClassName("btn").addEventListener('click', function() {
+        var theBtn = document.getElementsByClassName("btn");
+        theBtn = addEventListener('click', function() {
             console.log("clicked on: ");
         }, false);
     }
