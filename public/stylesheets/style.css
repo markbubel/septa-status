@@ -4,6 +4,8 @@
 }
 
 .childOfbus-alerts-container {
+    min-width:50px;
+    cursor:pointer;
     padding:5px;
     margin-right:5px;
     margin-bottom:5px;
@@ -12,6 +14,7 @@
 .childOfbus-alerts-container:hover {
     background:#333333;
     color:#ffffff;
+    text-decoration: underline;
 }
 
 .bus-search {
