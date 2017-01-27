@@ -1,7 +1,12 @@
 extends layout
 
 block content
-    h2 Bus routes with alerts
-    .container-fluid#bus-alerts-container
-        .row
+    h2 All bus routes
+    #bus-alerts-container
+        .childOfbus-alerts-container
+    form
+        .form-group
+            label(for='exampleInputEmail1') Find bus route status
+            input#exampleInputEmail1.form-control(type='email', placeholder='Route number')
+            button.btn.btn-default(type='submit') Search
     

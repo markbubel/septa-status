@@ -1,7 +1,7 @@
 class BusAlert extends Alert {
     render() {
         return `
-      <div class="col-md-1 ${this.isGoodService() ? 'bg-success' : 'bg-danger'}" style="margin:1px; padding-top:2px padding-bottom:2px;">
+      <div class="childOfbus-alerts-container ${this.isGoodService() ? 'bg-success' : 'bg-danger'}">
         ${this.route_name}
       </div>
 `;
