@@ -1,6 +1,8 @@
 class Alert {
     isGoodService() {
-        return this.advisory_message === "" && this.current_message === "" && this.detour_message === "";
+        if (this.current_message === "") {
+            return true;
+        }
     }
 
     renderMessage(msg, isLast) {

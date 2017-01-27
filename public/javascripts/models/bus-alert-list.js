@@ -1,6 +1,5 @@
 class BusAlertList {
     constructor(arrayOfAlerts = []) {
-        console.log('made bus')
         this.title = 'Bus';
         this.alerts = arrayOfAlerts;
         this.update();

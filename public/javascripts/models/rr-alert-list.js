@@ -1,6 +1,5 @@
 class RegionalRailAlertList {
     constructor(arrayOfAlerts = []) {
-        console.log('made rr')
         this.title = 'Regional Rail';
         this.alerts = arrayOfAlerts;
         this.update();
