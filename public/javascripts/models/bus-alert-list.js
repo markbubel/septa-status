@@ -9,6 +9,9 @@ class BusAlertList {
 
     searchRoute(theQuery) {
         for (var i = 0; i < this.alerts.length; i++) {
+            if (theQuery !== this.alerts[i].route_name) {
+                console.log("not a route");
+            }
             if (theQuery === this.alerts[i].route_name) break;
   }
 
