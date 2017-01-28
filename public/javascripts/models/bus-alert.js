@@ -1,12 +1,18 @@
 class BusAlert extends Alert {
     constructor() {
-        this.element = document.createElement('div');
-        this.element.textContent = this.current_message;
-        this.element.addEventListener('click', this.getDetails.bind(this));
+        super();
+        this.element = document.createElement('div');      
+        this.element.className = `childOfbus-alerts-container ${this.isGoodService() ? 'bg-success' : 'bg-danger'}`;
+        this.element.textContent = this.route_name;
+        this.element.addEventListener('click', this.getDetails(this));
+        console.log(this.route_name);
+          
 }
 
 getDetails() {
-    console.log(this);
+   var details = document.getElementById('bus-alert-details');
+   details.innerHTML = this.current_message;
+   console.log(this.route_name);
 }
 
 render() {

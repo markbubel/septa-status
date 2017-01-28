@@ -7,12 +7,12 @@ class BusAlertList {
     }
 
     render() {
-        let output = '';
+        const output = document.getElementById("bus-alerts-container");
+        output.innerHTML = '';
 
         for (const a of this.alerts) {
-            output += a.render();
+            output.appendChild(a.render());
         }
-        document.getElementById("bus-alerts-container").innerHTML = output;
     }
 
     update() {
