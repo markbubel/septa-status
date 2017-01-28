@@ -7,7 +7,13 @@ class BusAlert extends Alert {
 
 getDetails() {
    var details = document.getElementById('bus-alert-details');
-   details.innerHTML = this.advisory_message;
+   if (this.current_message === "") {
+       details.innerHTML = "Good service";
+   }
+   else {
+       details.innerHTML = this.current_message;
+   }
+   
 }
 
 render() {
