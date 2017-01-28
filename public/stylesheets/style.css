@@ -17,7 +17,7 @@
     text-decoration: underline;
 }
 
-.bus-search {
+#bus-search {
     margin-bottom:40px;
 }
 
@@ -25,4 +25,14 @@
     margin-top:15px;
      background:#333333;
      color:#ffffff;
+}
+
+#submit-button:hover {
+     background:#ffffff;
+     color:#333333;
+}
+
+.alertMessage {
+    margin:5px 0px 0px 0px;
+    color:#000000;
 }
