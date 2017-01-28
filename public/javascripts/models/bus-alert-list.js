@@ -8,19 +8,14 @@ class BusAlertList {
     }
 
     searchRoute(theQuery) {
-        console.log(theQuery);
-        for (const a of this.alerts) {
-            if (theQuery === a.route_name) {
-                console.log(this.advisory_message);
-            }
-            else {
-                console.log("no match found");
-            }
-        }
+        for (var i = 0; i < this.alerts.length; i++) {
+            if (theQuery === this.alerts[i].route_name) break;
+  }
+
+        document.getElementById("bus-alert-details").innerHTML = this.alerts[i].advisory_message;
     }
 
-    render() {
-                
+    render() {  
         const output = document.getElementById("bus-alerts-container");
         output.innerHTML = '';
 
