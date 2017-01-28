@@ -6,6 +6,8 @@ class SearchRoute {
 
     search(e) {
         e.preventDefault();
+        const query = document.getElementById('query');
+        console.log(this.app);
         this.app.searchBusRoute(e);
     }
 }
