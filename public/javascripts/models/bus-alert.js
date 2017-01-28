@@ -1,17 +1,14 @@
 class BusAlert extends Alert {
-    addClickListener() {
-        var theBtn = document.getElementsByClassName("btn");
-        theBtn = addEventListener('click', function() {
-            console.log("clicked on: ");
-        }, false);
-    }
+    constructor () {
+        this.document.getElementsByClassName('childOfbus-alerts-container').addEventListener('click', function(){});
+}
 
-    render() {
-        this.addClickListener();
-        return `
+
+render() {
+    return `
       <div class="childOfbus-alerts-container ${this.isGoodService() ? 'bg-success' : 'bg-danger'}">
         ${this.route_name}
       </div>
 `;
-    }
+}
 }
