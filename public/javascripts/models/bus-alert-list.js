@@ -14,7 +14,7 @@ class BusAlertList {
             }
   }
 
-        document.getElementById("bus-alert-details").innerHTML = this.alerts[i].advisory_message;
+        document.getElementById("bus-alert-details").innerHTML = this.alerts[i].current_message;
     }
 
     render() {  
