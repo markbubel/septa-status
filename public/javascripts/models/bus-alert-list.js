@@ -4,7 +4,18 @@ class BusAlertList {
         this.alerts = arrayOfAlerts;
         this.update();
         setInterval(this.update.bind(this), 60000);
-        this.searchBusRoute = new SearchRoute();
+        this.searchBusRoute = new SearchRoute(this);
+    }
+
+    searchBusRoute(routeNameSearch) {
+        for (const a of this.alerts) {
+            if (routeNameSearch === a.route_name) {
+                console.log("matched");
+            }
+            else {
+                console.log("no match found");
+            }
+        }
     }
 
     render() {
