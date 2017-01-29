@@ -23,8 +23,8 @@
 
 #submit-button {
     margin-top:15px;
-     background:#333333;
-     color:#ffffff;
+    background:#333333;
+    color:#ffffff;
 }
 
 #submit-button:hover {
@@ -36,3 +36,13 @@
     margin:5px 0px 0px 0px;
     color:#000000;
 }
+
+
+.rr-bg { background:#477997; color:#ffffff; }
+.mf-bg { background:#107DC1; color:#ffffff; }
+.bs-bg { background:#F58220; }
+.t-bg { background:#539442; }
+.nhs-bg { background:#9E3E97; color:#ffffff; }
+.buses-bg { background:#41525C; color:#ffffff; }
+.cct-bg { background:#0055A5; color:#ffffff; }
+.cct-bg { background:#333; color:#ffffff; }
