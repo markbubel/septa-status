@@ -68,7 +68,7 @@
 /***/ (function(module, exports) {
 
 console.log('Hello world');
-var allStatus = document.querySelector('#allStatus');
+var allStatus = document.querySelector('.list-group');
 fetch('/api/status')
     .then(function (response) {
     return response.json();
@@ -76,7 +76,8 @@ fetch('/api/status')
     .then(function (json) {
     json.forEach(function (element) {
         var li = document.createElement('li');
-        li.innerHTML = element.route_id + " " + element.route_name;
+        li.className = 'list-group-item';
+        li.innerHTML = "Route ID: " + element.route_id + "\n                            Route name: " + element.route_name;
         allStatus.appendChild(li);
     });
 });
