@@ -2,7 +2,7 @@
   "name": "septa-status",
   "version": "1.0.0",
   "description": "A better way to view SEPTA alerts and statuses",
-  "start": "node index.js",
+  "start": "node ./",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
