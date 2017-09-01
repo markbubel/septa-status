@@ -69,18 +69,38 @@
 
 console.log('Hello world');
 var allStatus = document.querySelector('.list-group');
+var allRegionalRails = [];
+var allBuses = [];
+var allTrolleyLines = [];
 fetch('/api/status')
     .then(function (response) {
     return response.json();
 })
     .then(function (json) {
     json.forEach(function (element) {
+        if (element.route_id.startsWith('rr_')) {
+            allRegionalRails.push(element);
+        }
+        else if (element.route_id.startsWith('bus_')) {
+            allBuses.push(element);
+        }
+        else if (element.route_id.startsWith('trolley_')) {
+            allTrolleyLines.push(element);
+        }
+        else {
+            console.log(element.route_id + " was not added");
+        }
+    });
+    renderTransitLine(allBuses);
+});
+function renderTransitLine(transitArray) {
+    transitArray.forEach(function (element) {
         var li = document.createElement('li');
         li.className = 'list-group-item';
-        li.innerHTML = "Route ID: " + element.route_id + "\n                            Route name: " + element.route_name;
+        li.innerHTML = "Bus Route ID: " + element.route_id + "\n                            Bus Route name: " + element.route_name;
         allStatus.appendChild(li);
     });
-});
+}
 
 
 /***/ })
