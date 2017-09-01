@@ -99,6 +99,8 @@ fetch('/api/status')
         }
     });
     renderTransitLine(allBuses);
+    renderTransitLine(allRegionalRails);
+    renderTransitLine(allTrolleyLines);
     renderAlertMessage(alertCount);
 });
 function renderTransitLine(transitArray) {
