@@ -73,7 +73,7 @@ var tableBody = document.querySelector('#tableBody');
 var allRegionalRails = [];
 var allBuses = [];
 var allTrolleyLines = [];
-fetch('/api/status')
+fetch('https://us-central1-ud-course-alert.cloudfunctions.net/getSeptaAlerts')
     .then(function (response) {
     return response.json();
 })
@@ -142,6 +142,13 @@ function renderAlertMessage(alertCount) {
         alertDiv.innerHTML = "There is a good service on all lines.";
     }
 }
+function searchTransit() {
+    alert("Searching...");
+}
+var searchForm = document.getElementById("searchButton");
+searchForm.addEventListener('click', function () {
+    searchTransit();
+});
 
 
 /***/ })
