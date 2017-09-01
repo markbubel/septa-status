@@ -73,9 +73,6 @@ var tableBody = document.querySelector('#tableBody');
 var allRegionalRails = [];
 var allBuses = [];
 var allTrolleyLines = [];
-function renderSomeX(x) {
-    x.idk = 20;
-}
 fetch('/api/status')
     .then(function (response) {
     return response.json();
@@ -111,14 +108,20 @@ function renderTransitLine(transitArray) {
         var tdRouteAlert = document.createElement('td');
         var tdRouteDetour = document.createElement('td');
         var tdRouteUpdateTime = document.createElement('td');
+        var tdDescription = document.createElement('td');
         tdRouteName.innerHTML = "" + element.route_name;
         tdRouteAlert.innerHTML = "" + element.isalert;
         tdRouteDetour.innerHTML = "" + element.isdetour;
         tdRouteUpdateTime.innerHTML = "" + element.last_updated;
+        tdDescription.innerHTML = "" + element.description;
+        if (element.isalert === 'Y') {
+            tdRouteAlert.className = "table-danger";
+        }
         tableRow.appendChild(tdRouteName);
         tableRow.appendChild(tdRouteAlert);
         tableRow.appendChild(tdRouteDetour);
         tableRow.appendChild(tdRouteUpdateTime);
+        tableRow.appendChild(tdDescription);
         tableBody.appendChild(tableRow);
     });
 }

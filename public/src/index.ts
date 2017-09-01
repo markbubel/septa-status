@@ -7,9 +7,6 @@ const tableBody = document.querySelector('#tableBody');
 let allRegionalRails = [];
 let allBuses = [];
 let allTrolleyLines = [];
-function renderSomeX(x) {
-    x.idk = 20;
-}
 
 fetch('/api/status')
     .then(function(response) {
@@ -46,18 +43,26 @@ fetch('/api/status')
             const tdRouteAlert = document.createElement('td');
             const tdRouteDetour = document.createElement('td');
             const tdRouteUpdateTime = document.createElement('td');
+            const tdDescription = document.createElement('td');
 
             tdRouteName.innerHTML = `${element.route_name}`;
             tdRouteAlert.innerHTML = `${element.isalert}`;
             tdRouteDetour.innerHTML = `${element.isdetour}`;
             tdRouteUpdateTime.innerHTML = `${element.last_updated}`;
+            tdDescription.innerHTML = `${element.description}`;
+
+            if(element.isalert === 'Y') {
+                tdRouteAlert.className = "table-danger";
+            }
 
             tableRow.appendChild(tdRouteName); 
             tableRow.appendChild(tdRouteAlert); 
             tableRow.appendChild(tdRouteDetour); 
-            tableRow.appendChild(tdRouteUpdateTime); 
+            tableRow.appendChild(tdRouteUpdateTime);
+            tableRow.appendChild(tdDescription);
 
             tableBody.appendChild(tableRow); 
+
         });
     }
 
