@@ -67,7 +67,6 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-console.log('Hello world');
 var allStatus = document.querySelector('.list-group');
 var tableBody = document.querySelector('#tableBody');
 var allRegionalRails = [];
@@ -80,22 +79,26 @@ fetch('https://us-central1-ud-course-alert.cloudfunctions.net/getSeptaAlerts')
     .then(function (json) {
     var alertCount = 0;
     json.forEach(function (element) {
-        if (element.isalert === 'Y') {
-            alertCount++;
+        if (element.route_id.startsWith('rr_')) {
+            allRegionalRails.push(element);
+            if (element.isalert === 'Y') {
+                alertCount++;
+            }
+        }
+        else if (element.route_id.startsWith('bus_')) {
+            allBuses.push(element);
+            if (element.isalert === 'Y') {
+                alertCount++;
+            }
+        }
+        else if (element.route_id.startsWith('trolley_')) {
+            allTrolleyLines.push(element);
+            if (element.isalert === 'Y') {
+                alertCount++;
+            }
         }
         else {
-            if (element.route_id.startsWith('rr_')) {
-                allRegionalRails.push(element);
-            }
-            else if (element.route_id.startsWith('bus_')) {
-                allBuses.push(element);
-            }
-            else if (element.route_id.startsWith('trolley_')) {
-                allTrolleyLines.push(element);
-            }
-            else {
-                console.log(element.route_id + " was not added");
-            }
+            console.log(element.route_name + " was not added");
         }
     });
     renderTransitLine(allBuses);

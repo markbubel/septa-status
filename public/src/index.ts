@@ -1,9 +1,5 @@
-console.log('Hello world');
-
 const allStatus = document.querySelector('.list-group');
-
 const tableBody = document.querySelector('#tableBody');
-
 let allRegionalRails = [];
 let allBuses = [];
 let allTrolleyLines = [];
@@ -15,21 +11,27 @@ fetch('https://us-central1-ud-course-alert.cloudfunctions.net/getSeptaAlerts')
     .then(function (json) {
         let alertCount = 0;
         json.forEach(element => {
-            if (element.isalert === 'Y') {
-                alertCount++;
-            }
-            else {
+            
+    
                 if (element.route_id.startsWith('rr_')) {
                     allRegionalRails.push(element);
+                    if (element.isalert === 'Y') {
+                        alertCount++;
+                    }
                 }
                 else if (element.route_id.startsWith('bus_')) {
                     allBuses.push(element);
+                    if (element.isalert === 'Y') {
+                        alertCount++;
+                    }
                 }
                 else if (element.route_id.startsWith('trolley_')) {
                     allTrolleyLines.push(element);
+                    if (element.isalert === 'Y') {
+                        alertCount++;
+                    }
                 }
-                else { console.log(element.route_id + " was not added"); }
-            }
+                else { console.log(element.route_name + " was not added"); }
         });
         renderTransitLine(allBuses);
         renderTransitLine(allRegionalRails);
@@ -62,14 +64,10 @@ function renderTransitLine(transitArray) {
         tableRow.appendChild(tdRouteDetour);
         tableRow.appendChild(tdRouteUpdateTime);
         tableRow.appendChild(tdDescription);
-
         tableBody.appendChild(tableRow);
 
     });
 }
-
-
-
 
 function renderAlertMessage(alertCount) {
     let alertDiv = document.getElementsByClassName('alert')[0];
@@ -94,5 +92,4 @@ function searchTransit() {
 var searchForm = document.getElementById("searchButton");
 searchForm.addEventListener('click', function() {
     searchTransit();
-})
-
+});
