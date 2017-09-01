@@ -69,37 +69,73 @@
 
 console.log('Hello world');
 var allStatus = document.querySelector('.list-group');
+var tableBody = document.querySelector('#tableBody');
 var allRegionalRails = [];
 var allBuses = [];
 var allTrolleyLines = [];
+function renderSomeX(x) {
+    x.idk = 20;
+}
 fetch('/api/status')
     .then(function (response) {
     return response.json();
 })
     .then(function (json) {
+    var alertCount = 0;
     json.forEach(function (element) {
-        if (element.route_id.startsWith('rr_')) {
-            allRegionalRails.push(element);
-        }
-        else if (element.route_id.startsWith('bus_')) {
-            allBuses.push(element);
-        }
-        else if (element.route_id.startsWith('trolley_')) {
-            allTrolleyLines.push(element);
+        if (element.isalert === 'Y') {
+            alertCount++;
         }
         else {
-            console.log(element.route_id + " was not added");
+            if (element.route_id.startsWith('rr_')) {
+                allRegionalRails.push(element);
+            }
+            else if (element.route_id.startsWith('bus_')) {
+                allBuses.push(element);
+            }
+            else if (element.route_id.startsWith('trolley_')) {
+                allTrolleyLines.push(element);
+            }
+            else {
+                console.log(element.route_id + " was not added");
+            }
         }
     });
     renderTransitLine(allBuses);
+    renderAlertMessage(alertCount);
 });
 function renderTransitLine(transitArray) {
     transitArray.forEach(function (element) {
-        var li = document.createElement('li');
-        li.className = 'list-group-item';
-        li.innerHTML = "Bus Route ID: " + element.route_id + "\n                            Bus Route name: " + element.route_name;
-        allStatus.appendChild(li);
+        var tableRow = document.createElement('tr');
+        var tdRouteName = document.createElement('td');
+        var tdRouteAlert = document.createElement('td');
+        var tdRouteDetour = document.createElement('td');
+        var tdRouteUpdateTime = document.createElement('td');
+        tdRouteName.innerHTML = "" + element.route_name;
+        tdRouteAlert.innerHTML = "" + element.isalert;
+        tdRouteDetour.innerHTML = "" + element.isdetour;
+        tdRouteUpdateTime.innerHTML = "" + element.last_updated;
+        tableRow.appendChild(tdRouteName);
+        tableRow.appendChild(tdRouteAlert);
+        tableRow.appendChild(tdRouteDetour);
+        tableRow.appendChild(tdRouteUpdateTime);
+        tableBody.appendChild(tableRow);
     });
+}
+function renderAlertMessage(alertCount) {
+    var alertDiv = document.getElementsByClassName('alert')[0];
+    if (alertCount === 1) {
+        alertDiv.className = 'alert alert-danger';
+        alertDiv.innerHTML = "There is " + alertCount + " alert across all lines.";
+    }
+    else if (alertCount > 1) {
+        alertDiv.className = 'alert alert-danger';
+        alertDiv.innerHTML = "There are " + alertCount + " alerts across all lines.";
+    }
+    else {
+        alertDiv.className = 'alert alert-success';
+        alertDiv.innerHTML = "There is a good service on all lines.";
+    }
 }
 
 
