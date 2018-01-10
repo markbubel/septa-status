@@ -10,6 +10,10 @@ app.listen(port, () => {
   console.log('Example app listening on' + port);
 });
 
+app.get("/", function(req, res, next) {
+  console.log("Testing out having a / path");
+});
+
 app.get("/api/status", function(req, res, next) {
   request('http://www3.septa.org/hackathon/Alerts/', function(error, response, body) {
     res.send(body);
