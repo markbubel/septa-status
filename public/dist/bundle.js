@@ -67,8 +67,6 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-var allStatus = document.querySelector('.list-group');
-var tableBody = document.querySelector('#tableBody');
 var allRegionalRails = [];
 var allBuses = [];
 var allTrolleyLines = [];
@@ -101,34 +99,73 @@ fetch('https://us-central1-ud-course-alert.cloudfunctions.net/getSeptaAlerts')
             console.log(element.route_name + " was not added");
         }
     });
-    renderTransitLine(allBuses);
-    renderTransitLine(allRegionalRails);
-    renderTransitLine(allTrolleyLines);
     renderAlertMessage(alertCount);
+    renderBus(allBuses);
+    renderRail(allRegionalRails);
+    renderTrolley(allTrolleyLines);
 });
-function renderTransitLine(transitArray) {
-    transitArray.forEach(function (element) {
-        var tableRow = document.createElement('tr');
-        var tdRouteName = document.createElement('td');
-        var tdRouteAlert = document.createElement('td');
-        var tdRouteDetour = document.createElement('td');
-        var tdRouteUpdateTime = document.createElement('td');
-        var tdDescription = document.createElement('td');
-        tdRouteName.innerHTML = "" + element.route_name;
-        tdRouteAlert.innerHTML = "" + element.isalert;
-        tdRouteDetour.innerHTML = "" + element.isdetour;
-        tdRouteUpdateTime.innerHTML = "" + element.last_updated;
-        tdDescription.innerHTML = "" + element.description;
+function renderBus(transportModeArray) {
+    var problemBusLines = [];
+    var busAlertCount = 0;
+    var busAlertMessage = document.querySelector('.bus-alert-message');
+    var busAlertList = document.querySelector('.bus-alert-list');
+    transportModeArray.forEach(function (element) {
         if (element.isalert === 'Y') {
-            tdRouteAlert.className = "table-danger";
+            busAlertCount++;
+            problemBusLines.push(element);
         }
-        tableRow.appendChild(tdRouteName);
-        tableRow.appendChild(tdRouteAlert);
-        tableRow.appendChild(tdRouteDetour);
-        tableRow.appendChild(tdRouteUpdateTime);
-        tableRow.appendChild(tdDescription);
-        tableBody.appendChild(tableRow);
     });
+    if (busAlertCount >= 1) {
+        busAlertMessage.innerHTML = "There are " + busAlertCount + " alerts!";
+        problemBusLines.forEach(function (el) {
+            var singleBus = document.createElement('p');
+            singleBus.className = "single-bus";
+            singleBus.innerHTML = "Route number " + el.route_name + ". This is the " + el.description + " route.";
+            busAlertList.appendChild(singleBus);
+        });
+    }
+}
+function renderRail(transportModeArray) {
+    var problemRailLines = [];
+    var railAlertCount = 0;
+    var railAlertMessage = document.querySelector('.rail-alert-message');
+    var railAlertList = document.querySelector('.rail-alert-list');
+    transportModeArray.forEach(function (element) {
+        if (element.isalert === 'Y') {
+            railAlertCount++;
+            problemRailLines.push(element);
+        }
+    });
+    if (railAlertCount >= 1) {
+        railAlertMessage.innerHTML = "There are " + railAlertCount + " alerts!";
+        problemRailLines.forEach(function (el) {
+            var singleRail = document.createElement('p');
+            singleRail.className = "single-rail";
+            singleRail.innerHTML = "Route number " + el.route_name + ". This is the " + el.description + " route.";
+            railAlertList.appendChild(singleRail);
+        });
+    }
+}
+function renderTrolley(transportModeArray) {
+    var problemTrolleyLines = [];
+    var trolleyAlertCount = 0;
+    var trolleyAlertMessage = document.querySelector('.trolley-alert-message');
+    var trolleyAlertList = document.querySelector('.trolley-alert-list');
+    transportModeArray.forEach(function (element) {
+        if (element.isalert === 'Y') {
+            trolleyAlertCount++;
+            problemTrolleyLines.push(element);
+        }
+    });
+    if (trolleyAlertCount >= 1) {
+        trolleyAlertMessage.innerHTML = "There are " + trolleyAlertCount + " alerts!";
+        problemTrolleyLines.forEach(function (el) {
+            var singleTrolley = document.createElement('p');
+            singleTrolley.className = "single-trolley";
+            singleTrolley.innerHTML = "Route number " + el.route_name + ". This is the " + el.description + " route.";
+            trolleyAlertList.appendChild(singleTrolley);
+        });
+    }
 }
 function renderAlertMessage(alertCount) {
     var alertDiv = document.getElementsByClassName('alert')[0];
@@ -145,13 +182,13 @@ function renderAlertMessage(alertCount) {
         alertDiv.innerHTML = "There is a good service on all lines.";
     }
 }
-function searchTransit() {
-    alert("Searching...");
-}
-var searchForm = document.getElementById("searchButton");
-searchForm.addEventListener('click', function () {
-    searchTransit();
-});
+// function searchTransit() {
+//     alert("Searching...");
+// }
+// var searchForm = document.getElementById("searchButton");
+// searchForm.addEventListener('click', function() {
+//     searchTransit();
+// }); 
 
 
 /***/ })

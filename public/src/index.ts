@@ -1,5 +1,3 @@
-const allStatus = document.querySelector('.list-group');
-const tableBody = document.querySelector('#tableBody');
 let allRegionalRails = [];
 let allBuses = [];
 let allTrolleyLines = [];
@@ -11,8 +9,6 @@ fetch('https://us-central1-ud-course-alert.cloudfunctions.net/getSeptaAlerts')
     .then(function (json) {
         let alertCount = 0;
         json.forEach(element => {
-            
-    
                 if (element.route_id.startsWith('rr_')) {
                     allRegionalRails.push(element);
                     if (element.isalert === 'Y') {
@@ -33,41 +29,89 @@ fetch('https://us-central1-ud-course-alert.cloudfunctions.net/getSeptaAlerts')
                 }
                 else { console.log(element.route_name + " was not added"); }
         });
-        renderTransitLine(allBuses);
-        renderTransitLine(allRegionalRails);
-        renderTransitLine(allTrolleyLines);
         renderAlertMessage(alertCount);
+
+        renderBus(allBuses);
+        renderRail(allRegionalRails);
+        renderTrolley(allTrolleyLines);
+        
     });
 
-function renderTransitLine(transitArray) {
-    transitArray.forEach(element => {
-        const tableRow = document.createElement('tr');
+    function renderBus(transportModeArray) {
+        let problemBusLines = [];
+        let busAlertCount = 0;
+        let busAlertMessage = document.querySelector('.bus-alert-message');
+        let busAlertList = document.querySelector('.bus-alert-list');
 
-        const tdRouteName = document.createElement('td');
-        const tdRouteAlert = document.createElement('td');
-        const tdRouteDetour = document.createElement('td');
-        const tdRouteUpdateTime = document.createElement('td');
-        const tdDescription = document.createElement('td');
+        transportModeArray.forEach(element => {
+            if (element.isalert === 'Y') {
+                busAlertCount++
+                problemBusLines.push(element);
 
-        tdRouteName.innerHTML = `${element.route_name}`;
-        tdRouteAlert.innerHTML = `${element.isalert}`;
-        tdRouteDetour.innerHTML = `${element.isdetour}`;
-        tdRouteUpdateTime.innerHTML = `${element.last_updated}`;
-        tdDescription.innerHTML = `${element.description}`;
+            }
+        });
 
-        if (element.isalert === 'Y') {
-            tdRouteAlert.className = "table-danger";
+        if (busAlertCount >= 1) {
+            busAlertMessage.innerHTML = `There are ${busAlertCount} alerts!`;
+
+            problemBusLines.forEach(el => {
+                let singleBus = document.createElement('p');
+                singleBus.className = "single-bus";
+                singleBus.innerHTML = `Route number ${el.route_name}. This is the ${el.description} route.`;
+                busAlertList.appendChild(singleBus);
+            });
         }
+    }
 
-        tableRow.appendChild(tdRouteName);
-        tableRow.appendChild(tdRouteAlert);
-        tableRow.appendChild(tdRouteDetour);
-        tableRow.appendChild(tdRouteUpdateTime);
-        tableRow.appendChild(tdDescription);
-        tableBody.appendChild(tableRow);
+    function renderRail(transportModeArray) {
+        let problemRailLines = [];
+        let railAlertCount = 0;
+        let railAlertMessage = document.querySelector('.rail-alert-message');
+        let railAlertList = document.querySelector('.rail-alert-list');
+        
+        transportModeArray.forEach(element => {
+            if (element.isalert === 'Y') {
+                railAlertCount++;
+                problemRailLines.push(element);
+            }
+        });
 
-    });
-}
+        if (railAlertCount >= 1) {
+            railAlertMessage.innerHTML = `There are ${railAlertCount} alerts!`;
+
+            problemRailLines.forEach(el => {
+                let singleRail = document.createElement('p');
+                singleRail.className = "single-rail";
+                singleRail.innerHTML = `Route number ${el.route_name}. This is the ${el.description} route.`;
+                railAlertList.appendChild(singleRail);
+            });
+            
+        }
+    }
+
+    function renderTrolley(transportModeArray) {
+        let problemTrolleyLines = [];
+        let trolleyAlertCount = 0;
+        let trolleyAlertMessage = document.querySelector('.trolley-alert-message');
+        let trolleyAlertList = document.querySelector('.trolley-alert-list');
+
+        transportModeArray.forEach(element => {
+            if (element.isalert === 'Y') {
+                trolleyAlertCount++;
+                problemTrolleyLines.push(element);
+            }
+        });
+        if (trolleyAlertCount >= 1) {
+            trolleyAlertMessage.innerHTML = `There are ${trolleyAlertCount} alerts!`;
+
+            problemTrolleyLines.forEach(el => {
+                let singleTrolley = document.createElement('p');
+                singleTrolley.className = "single-trolley";
+                singleTrolley.innerHTML = `Route number ${el.route_name}. This is the ${el.description} route.`;
+                trolleyAlertList.appendChild(singleTrolley);
+            });
+        }
+    }
 
 function renderAlertMessage(alertCount) {
     let alertDiv = document.getElementsByClassName('alert')[0];
@@ -85,11 +129,11 @@ function renderAlertMessage(alertCount) {
     }
 }
 
-function searchTransit() {
-    alert("Searching...");
-}
+// function searchTransit() {
+//     alert("Searching...");
+// }
 
-var searchForm = document.getElementById("searchButton");
-searchForm.addEventListener('click', function() {
-    searchTransit();
-});
+// var searchForm = document.getElementById("searchButton");
+// searchForm.addEventListener('click', function() {
+//     searchTransit();
+// });

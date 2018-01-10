@@ -1,3 +1,20 @@
 .jumbotron {
-    background-image: url("../images/philly.jpg");
+    background-image: url("../images/trains-city.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.single-bus {
+    border-left: 5px solid #42525B;
+    padding-left: 10px;
+}
+
+.single-rail {
+     border-left: 5px solid #497996;
+     padding-left: 10px;
+}
+
+.single-trolley {
+    border-left: 5px solid #559346;
+    padding-left: 10px;
 }

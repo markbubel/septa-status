@@ -6,32 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SEPTA Status</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="/public/css/custom.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/custom.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Lines</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-            aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Regional Rail</a>
-                <a class="nav-item nav-link" href="#">Bus</a>
-                <a class="nav-item nav-link" href="#">Trolley Lines</a>
-                <a class="nav-item nav-link" href="#">CCT Connect</a>
-            </div>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" id="searchButton" type="submit">Search</button>
-            </form>
-        </div>
-
-    </nav>
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
@@ -41,34 +20,45 @@
         </div>
     </div>
 
-    <h1>All Status</h1>
-    <table class="table table-hover table-responsive">
-        <thead>
-            <tr>
-                <th>Route name</th>
-                <th>Alert</th>
-                <th>On detour?</th>
-                <th>Last updated</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody">
+    
+    <div class="container">
+        <div class="row">
+          <div class="col-sm bus-col">
+            <h2>Bus</h2>
+            <p class="bus-alert-message">Good service</p>
+            <div class="bus-alert-list"></div>
+          </div>
+          <div class="col-sm rail-col">
+            <h2>Regional rail</h2>
+            <p class="rail-alert-message">Good service</p>
+            <div class="rail-alert-list"></div>
+          </div>
+          <div class="col-sm trolley-col">
+            <h2>Trolley</h2>
+            <p class="trolley-alert-message">Good service</p>
+            <div class="trolley-alert-list"></div>
+          </div>
+        </div>
+        <p><a href="https://github.com/markbubel/septa-status">View the source on GitHub</a></p>
 
-        </tbody>
-    </table>
+      </div>
+    
+    
+
+   
+
+    
 
 
-    <ul class="list-group"></ul>
-    <p><a href="https://github.com/markbubel/septa-status">View the source on GitHub</a></p>
+
+
+
 
 
     <script src="./dist/bundle.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 </body>
 
 </html>
