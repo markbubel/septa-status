@@ -3,9 +3,8 @@ const request = require('request');
 const app = express();
 
 app.use(express.static('public'));
+app.listen(process.env.PORT || 8080); // process.env.PORT lets the port be set by Heroku
 
-// process.env.PORT lets the port be set by Heroku
-var port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log('Example app listening on' + port);
