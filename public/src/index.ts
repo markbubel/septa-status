@@ -2,7 +2,7 @@ let allRegionalRails = [];
 let allBuses = [];
 let allTrolleyLines = [];
 
-fetch('https://us-central1-ud-course-alert.cloudfunctions.net/getSeptaAlerts')
+fetch('/api/status')
     .then(function (response) {
         return response.json();
     })
